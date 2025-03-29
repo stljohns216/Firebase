@@ -1,0 +1,227 @@
+{
+  "customers": {
+    "cust001": {
+      "firstName": "John",
+      "lastName": "Smith",
+      "email": "john.smith@example.com",
+      "phone": "555-123-4567",
+      "address": {
+        "street": "123 Main Street",
+        "city": "Springfield",
+        "state": "IL",
+        "zipCode": "62704",
+        "country": "USA"
+      },
+      "dateJoined": "2021-01-01",
+      "status": "active",
+      "loyaltyPoints": 250
+    },
+    "cust002": {
+      "firstName": "Sarah",
+      "lastName": "Johnson",
+      "email": "sarah.j@example.com",
+      "phone": "555-987-6543",
+      "address": {
+        "street": "456 Oak Avenue",
+        "city": "Riverdale",
+        "state": "NY",
+        "zipCode": "10471",
+        "country": "USA"
+      },
+      "dateJoined": "2021-02-01",
+      "status": "active",
+      "loyaltyPoints": 175
+    },
+    "cust003": {
+      "firstName": "Miguel",
+      "lastName": "Rodriguez",
+      "email": "miguel.r@example.com",
+      "phone": "555-456-7890",
+      "address": {
+        "street": "789 Pine Road",
+        "city": "Portland",
+        "state": "OR",
+        "zipCode": "97205",
+        "country": "USA"
+      },
+      "dateJoined": "2021-03-01",
+      "status": "inactive",
+      "loyaltyPoints": 50
+    }
+  },
+  "orders": {
+    "ord001": {
+      "customerId": "cust001",
+      "orderDate": "2021-07-01",
+      "status": "delivered",
+      "shippingAddress": {
+        "street": "123 Main Street",
+        "city": "Springfield",
+        "state": "IL",
+        "zipCode": "62704",
+        "country": "USA"
+      },
+      "paymentMethod": "credit_card",
+      "paymentStatus": "paid",
+      "totalAmount": 127.94,
+      "tax": 10.99,
+      "shipping": 5.99,
+      "items": {
+        "item1": {
+          "productId": "prod001",
+          "quantity": 2,
+          "pricePerUnit": 29.99,
+          "discount": 0
+        },
+        "item2": {
+          "productId": "prod003",
+          "quantity": 1,
+          "pricePerUnit": 59.99,
+          "discount": 8.01
+        }
+      }
+    },
+    "ord002": {
+      "customerId": "cust002",
+      "orderDate": "2021-07-15",
+      "status": "shipped",
+      "shippingAddress": {
+        "street": "456 Oak Avenue",
+        "city": "Riverdale",
+        "state": "NY",
+        "zipCode": "10471",
+        "country": "USA"
+      },
+      "paymentMethod": "paypal",
+      "paymentStatus": "paid",
+      "totalAmount": 85.47,
+      "tax": 7.48,
+      "shipping": 0,
+      "items": {
+        "item1": {
+          "productId": "prod002",
+          "quantity": 1,
+          "pricePerUnit": 77.99,
+          "discount": 0
+        }
+      }
+    },
+    "ord003": {
+      "customerId": "cust001",
+      "orderDate": "2021-09-01",
+      "status": "processing",
+      "shippingAddress": {
+        "street": "123 Main Street",
+        "city": "Springfield",
+        "state": "IL",
+        "zipCode": "62704",
+        "country": "USA"
+      },
+      "paymentMethod": "credit_card",
+      "paymentStatus": "pending",
+      "totalAmount": 214.96,
+      "tax": 18.97,
+      "shipping": 5.99,
+      "items": {
+        "item1": {
+          "productId": "prod005",
+          "quantity": 1,
+          "pricePerUnit": 149.99,
+          "discount": 0
+        },
+        "item2": {
+          "productId": "prod006",
+          "quantity": 2,
+          "pricePerUnit": 19.99,
+          "discount": 0
+        }
+      }
+    }
+  },
+  "products": {
+    "prod001": {
+      "name": "Basic T-Shirt",
+      "description": "Comfortable cotton t-shirt in various colors",
+      "category": "clothing",
+      "price": 29.99,
+      "stockQuantity": 150,
+      "attributes": {
+        "sizes": ["S", "M", "L", "XL"],
+        "colors": ["Black", "White", "Blue", "Red"],
+        "material": "100% Cotton"
+      },
+      "imageUrl": "https://example.com/images/tshirt.jpg",
+      "isActive": true
+    },
+    "prod002": {
+      "name": "Wireless Headphones",
+      "description": "Noise-cancelling wireless headphones with 20hr battery life",
+      "category": "electronics",
+      "price": 77.99,
+      "stockQuantity": 45,
+      "attributes": {
+        "colors": ["Black", "Silver"],
+        "connectivity": "Bluetooth 5.0",
+        "batteryLife": "20 hours"
+      },
+      "imageUrl": "https://example.com/images/headphones.jpg",
+      "isActive": true
+    },
+    "prod003": {
+      "name": "Running Shoes",
+      "description": "Lightweight running shoes with cushioned soles",
+      "category": "footwear",
+      "price": 59.99,
+      "stockQuantity": 78,
+      "attributes": {
+        "sizes": ["7", "8", "9", "10", "11", "12"],
+        "colors": ["Gray/Blue", "Black/Red", "White/Green"],
+        "material": "Synthetic mesh"
+      },
+      "imageUrl": "https://example.com/images/runningshoes.jpg",
+      "isActive": true
+    },
+    "prod004": {
+      "name": "Coffee Maker",
+      "description": "Programmable coffee maker with 12-cup capacity",
+      "category": "appliances",
+      "price": 49.99,
+      "stockQuantity": 32,
+      "attributes": {
+        "color": "Stainless Steel",
+        "capacity": "12 cups",
+        "features": ["Programmable", "Auto-shutoff", "Brew strength control"]
+      },
+      "imageUrl": "https://example.com/images/coffeemaker.jpg",
+      "isActive": true
+    },
+    "prod005": {
+      "name": "Smart Watch",
+      "description": "Fitness tracking smartwatch with heart rate monitor",
+      "category": "electronics",
+      "price": 149.99,
+      "stockQuantity": 25,
+      "attributes": {
+        "colors": ["Black", "Silver", "Rose Gold"],
+        "features": ["Heart Rate Monitor", "GPS", "Water Resistant"],
+        "batteryLife": "5 days"
+      },
+      "imageUrl": "https://example.com/images/smartwatch.jpg",
+      "isActive": true
+    },
+    "prod006": {
+      "name": "Water Bottle",
+      "description": "Insulated stainless steel water bottle, keeps drinks cold for 24 hours",
+      "category": "accessories",
+      "price": 19.99,
+      "stockQuantity": 200,
+      "attributes": {
+        "capacity": "20 oz",
+        "colors": ["Blue", "Black", "Red", "Green"],
+        "material": "Stainless Steel"
+      },
+      "imageUrl": "https://example.com/images/waterbottle.jpg",
+      "isActive": true
+    }
+  }
+}
