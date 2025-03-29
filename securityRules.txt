@@ -1,0 +1,90 @@
+{
+  "rules": {
+    // Default deny all access
+    ".read": false,
+    ".write": false,
+    
+    "customers": {
+      // Allow authenticated users to read all customer data (adjust if needed)
+      ".read": "auth !== null",
+      
+      "$customerId": {
+        // Only allow customers to modify their own data
+        ".write": "auth !== null && auth.uid === $customerId",
+        
+        // Validate customer data structure
+        ".validate": "newData.hasChildren(['firstName', 'lastName', 'email'])",
+        
+        "email": {
+          ".validate": "newData.isString() && newData.val().matches(/^[^@]+@[^@]+\\.[^@]+$/)"
+        },
+        
+        "loyaltyPoints": {
+          ".validate": "newData.isNumber() && newData.val() >= 0"
+        }
+      }
+    },
+    
+    "orders": {
+      // Allow authenticated users to read all orders (adjust if needed)
+      ".read": "auth !== null",
+      
+      "$orderId": {
+        // Allow customers to create orders and modify only their own orders
+        ".write": "auth !== null && 
+                  ((!data.exists() && newData.child('customerId').val() === auth.uid) || 
+                   (data.exists() && data.child('customerId').val() === auth.uid))",
+        
+        // Validate order structure
+        ".validate": "newData.hasChildren(['customerId', 'orderDate', 'items'])",
+        
+        "totalAmount": {
+          ".validate": "newData.isNumber() && newData.val() >= 0"
+        },
+        
+        "items": {
+          "$itemId": {
+            ".validate": "newData.hasChildren(['productId', 'quantity', 'pricePerUnit'])",
+            
+            "quantity": {
+              ".validate": "newData.isNumber() && newData.val() > 0"
+            },
+            
+            "pricePerUnit": {
+              ".validate": "newData.isNumber() && newData.val() >= 0"
+            }
+          }
+        }
+      }
+    },
+    
+    "products": {
+      // Allow anyone to read product data
+      ".read": true,
+      
+      // Only allow admin to modify products 
+      ".write": "auth !== null && root.child('admins').child(auth.uid).exists()",
+      
+      "$productId": {
+        // Validate product structure
+        ".validate": "newData.hasChildren(['name', 'price', 'stockQuantity'])",
+        
+        "price": {
+          ".validate": "newData.isNumber() && newData.val() >= 0"
+        },
+        
+        "stockQuantity": {
+          ".validate": "newData.isNumber() && newData.val() >= 0"
+        }
+      }
+    },
+    
+    // Add an admins node to manage admin users
+    "admins": {
+      // Only admins can read the admin list
+      ".read": "auth !== null && root.child('admins').child(auth.uid).exists()",
+      // Only admins can modify the admin list
+      ".write": "auth !== null && root.child('admins').child(auth.uid).exists()"
+    }
+  }
+}
