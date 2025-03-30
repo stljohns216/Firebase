@@ -1,0 +1,21 @@
+Firebase Security Considerations
+1. Authentication: Firebase supports several authentication methods
+	Traditional Email and Password
+	OAuth: Google, Facebook, GitHub, etc
+	Custom-created authentication 
+	Key considerations: Properly configure OAuth, password complexity, two factor verification. 
+2. Authorization: Rule-based system to control data access through JSON documents to manage authorization. 
+	Key considerations: Due to the hierarchical permissions granted to parent objects, allow access to all child objects.  
+Use Default Deny and explicit allow for authenticated users
+Use the principle of least privilege 
+3. Data Protection:
+	Uses HTTP/SSL to protect data in transit 
+	As a fully managed tool, Google infrastructure encrypts the data at rest
+	For sensitive data, extra precautions may need to be taken to meet legal and regulatory requirements. 
+Firebase Performance Optimization
+1. Data structure optimization 
+	Flatten the data structure to avoid deeply nested data. Firebase will return the entire subtree when querying data, and that will affect performance depending on how nested the data is structured. 
+2. Query Optimization
+	Use Indexes for frequently queried fields. 
+3. Data Loading
+	Load data in chuck rather than all at once.
